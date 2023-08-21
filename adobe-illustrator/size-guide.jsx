@@ -4,21 +4,21 @@ Copyright © 2023
 https://linktr.ee/heroleam
 */
 
-// Script: Cria medidas do objeto selecionado
+// Script: Creates measurements of the selected object
 
 // ----------------------------------------------------------------------------------- //
 
 if (app.selection.length === 0) {
-  alert("Por favor, selecione um objeto.");
+  alert("Please select an object.");
 } else {
   var doc = app.activeDocument;
   var element = doc.selection[0];
-  // armazena as coordenadas e dimensões do elemento
-  var centimetros = 28.35;
+  var cm = 28.35;
   var elementX = element.left;
   var elementY = element.top;
   var elementWidth = element.width;
   var elementHeight = element.height;
+  var layerName = "Size"
 
   var square = doc.activeLayer.pathItems.rectangle(
     elementY,
@@ -32,7 +32,7 @@ if (app.selection.length === 0) {
   square.selected = true;
 
   var newLayer = app.activeDocument.layers.add();
-  newLayer.name = "Tamanho";
+  newLayer.name = layerName;
   var lightBlueColor = new RGBColor();
   lightBlueColor.red = 79;
   lightBlueColor.green = 128;
@@ -54,7 +54,7 @@ if (app.selection.length === 0) {
 
   // ----------------------------------------------------------------------------------- //
 
-  // Cria uma nova linha horizontal
+  // Creates and sets a new horizontal line
   var horizontalLine = app.activeDocument.pathItems.add();
   horizontalLine.setEntirePath([
     [0, height],
@@ -69,11 +69,9 @@ if (app.selection.length === 0) {
   horizontalLine.strokeColor.blue = 0;
 
   var position = selectedObject.position;
-  horizontalLine.position = [position[0], position[1] - height - centimetros];
+  horizontalLine.position = [position[0], position[1] - height - cm];
 
-  // ----------------------------------------------------------------------------------- //
-
-  // Cria uma nova linha vertical
+  // Creates and sets a new vertical line
   var verticalLine = app.activeDocument.pathItems.add();
   verticalLine.setEntirePath([
     [width, 0],
@@ -87,16 +85,16 @@ if (app.selection.length === 0) {
   verticalLine.strokeColor.green = 0;
   verticalLine.strokeColor.blue = 0;
 
-  verticalLine.position = [position[0] - centimetros, position[1]];
+  verticalLine.position = [position[0] - cm, position[1]];
 
   // ----------------------------------------------------------------------------------- //
 
-  // Cria o texto para a linha horizontal
+  // Creates the text for the horizontal line
   var horizontalText = app.activeDocument.textFrames.add();
-  horizontalText.contents = (width / centimetros).toFixed(1) + " cm";
+  horizontalText.contents = (width / cm).toFixed(1) + " cm";
   horizontalText.position = [
     position[0] + width / 2,
-    position[1] - (height + centimetros * 2),
+    position[1] - (height + cm * 2),
   ];
   horizontalText.textRange.characterAttributes.fillColor = new RGBColor();
   horizontalText.textRange.characterAttributes.fillColor.red = 255;
@@ -108,15 +106,10 @@ if (app.selection.length === 0) {
   horizontalText.textRange.paragraphAttributes.justification =
     Justification.CENTER;
 
-  // ----------------------------------------------------------------------------------- //
-
-  // Cria o texto para a linha vertical
+  // Creates the text for the vertical line
   var verticalText = app.activeDocument.textFrames.add();
-  verticalText.contents = (height / centimetros).toFixed(1) + " cm";
-  verticalText.position = [
-    position[0] - centimetros * 2,
-    position[1] - height / 2,
-  ];
+  verticalText.contents = (height / cm).toFixed(1) + " cm";
+  verticalText.position = [position[0] - cm * 2, position[1] - height / 2];
   verticalText.textRange.characterAttributes.fillColor = new RGBColor();
   verticalText.textRange.characterAttributes.fillColor.red = 255;
   verticalText.textRange.characterAttributes.fillColor.green = 0;
@@ -130,6 +123,6 @@ if (app.selection.length === 0) {
 
   // ----------------------------------------------------------------------------------- //
 
-  // Deleta o quadrado temporário
+  // Delete the temporary square
   square.remove();
 }
