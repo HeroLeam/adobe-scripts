@@ -6,8 +6,6 @@ https://linktr.ee/heroleam
 
 // Script: Creates measurements of the selected object
 
-// ----------------------------------------------------------------------------------- //
-
 if (app.selection.length === 0) {
   alert("Please select an object.");
 } else {

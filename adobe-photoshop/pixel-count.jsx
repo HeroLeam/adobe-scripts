@@ -4,7 +4,7 @@ Copyright © 2023
 https://linktr.ee/heroleam
 */
 
-// ----------------------------------------------------------------------------------- //
+// Script: Copies the number of pixels in the active selection to the clipboard
 
 var doc = app.activeDocument;
 var channel = doc.activeChannels[0];
