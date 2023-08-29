@@ -20,14 +20,13 @@ lightBlueColor.blue = 255;
 backgroundLayer.color = lightBlueColor;
 backgroundLayer.zOrder(ZOrderMethod.SENDTOBACK);
 
+var x = artboard.artboardRect[0];
+var y = artboard.artboardRect[1];
+
 var width = artboard.artboardRect[2] - artboard.artboardRect[0];
 var height = artboard.artboardRect[1] - artboard.artboardRect[3];
 
-var x = artboard.artboardRect[0] / 2;
-var y = artboard.artboardRect[1] / 2;
 var square = backgroundLayer.pathItems.rectangle(y, x, width, height);
 square.filled = true;
 square.stroked = false;
 square.selected = true;
-
-doc.fitArtboardToSelectedArt(0);
