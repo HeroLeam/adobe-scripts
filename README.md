@@ -1,2 +1,3 @@
-# adobe-scripts
- Repositório de Scripts para Adobe
+# Adobe Scripts
+
+Repositório de Scripts para Adobe Illustrator e Adobe Photoshop.
