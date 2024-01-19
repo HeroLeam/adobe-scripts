@@ -4,33 +4,23 @@ Copyright © 2023
 https://linktr.ee/heroleam
 */
 
-// ----------------------------------------------------------------------------------- //
-
 var doc = app.activeDocument;
-var nomeArquivo = doc.name;
-var pastaOrigem = doc.path;
+var fileName = doc.name;
+var folderOrigin = doc.path;
+var nameWithoutExtension = fileName.split(".")[0];
 
-var nomeSemExtensao = nomeArquivo.split(".")[0];
-
-var novoNome = prompt(
-  "Enter the file name (without extension):",
-  nomeSemExtensao
-);
-if (novoNome === null) {
-  alert("Export cancelled.");
+var newName = prompt("Digite o nome do arquivo:", nameWithoutExtension);
+if (newName === null) {
+  alert("Exportação cancelada");
 } else {
   var exportOptions = new ExportOptionsAutoCAD();
   exportOptions.exportFileFormat = AutoCADExportFileFormat.DXF;
   exportOptions.unit = AutoCADUnit.Centimeters;
   exportOptions.unitScaleRatio = 1.0;
 
-  var nomeArquivoComExtensao = novoNome + ".dxf";
-  var caminhoCompleto = new File(pastaOrigem + "/" + nomeArquivoComExtensao);
+  var fileNameWIthExtension = newName + ".dxf";
+  var fullPath = new File(folderOrigin + "/" + fileNameWIthExtension);
 
-  app.activeDocument.exportFile(
-    caminhoCompleto,
-    ExportType.AUTOCAD,
-    exportOptions
-  );
-  alert("exported successfully!");
+  app.activeDocument.exportFile(fullPath, ExportType.AUTOCAD, exportOptions);
+  alert("Exportado com sucesso!");
 }

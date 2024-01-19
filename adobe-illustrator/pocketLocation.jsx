@@ -6,106 +6,79 @@ https://linktr.ee/heroleam
 
 // Script: Localiza aplique para gabarito estilo bolso
 
-// ----------------------------------------------------------------------------------- //
+var cm = 28.3465
 
-// Verifica se dois objetos estão selecionados
 if (app.selection.length > 1) {
   // Criação do painel de escolha
   var painel = new Window("dialog", "Painel de Escolha");
 
-  // Botão 1
-  var botao1 = painel.add("button", undefined, "PB - MB - GB");
-  botao1.onClick = function () {
-    alinharObjetos();
-    moverObjeto(-9.5);
-    excluirObjeto();
+  var buttonOne = painel.add("button", undefined, "PB - MB - GB");
+  buttonOne.onClick = function () {
+    alignObjects();
+    moveObject(-9.5);
+    deleteObject();
     painel.close();
   };
 
-  // Botão 2
-  var botao2 = painel.add("button", undefined, "1 - 2 - 3");
-  botao2.onClick = function () {
-    alinharObjetos();
-    moverObjeto(-11.5);
-    excluirObjeto();
+  var buttonTwo = painel.add("button", undefined, "1 - 2 - 3");
+  buttonTwo.onClick = function () {
+    alignObjects();
+    moveObject(-11.5);
+    deleteObject();
     painel.close();
   };
 
-  // Botão 3
-  var botao3 = painel.add("button", undefined, "4 - 6 - 8");
-  botao3.onClick = function () {
-    alinharObjetos();
-    moverObjeto(-13);
-    excluirObjeto();
+  var buttonThree = painel.add("button", undefined, "4 - 6 - 8");
+  buttonThree.onClick = function () {
+    alignObjects();
+    moveObject(-13);
+    deleteObject();
     painel.close();
   };
 
-  // Botão 4
-  var botao4 = painel.add("button", undefined, "10 - 12 - 14");
-  botao4.onClick = function () {
-    alinharObjetos();
-    moverObjeto(-15.5);
-    excluirObjeto();
+  var buttonFour = painel.add("button", undefined, "10 - 12 - 14");
+  buttonFour.onClick = function () {
+    alignObjects();
+    moveObject(-15.5);
+    deleteObject();
     painel.close();
   };
 
-  // Mostra o painel
   painel.show();
 
-  // Função para alinhar objetos
-  function alinharObjetos() {
-    // Objeto selecionado por baixo
-    var objetoAlinhar = app.selection[1];
-    // Objeto selecionado por cima
-    var objetoReferencia = app.selection[0];
+  function alignObjects() {
+    var objectAlinhar = app.selection[1]; // Object selected from below
+    var objectReferencia = app.selection[0]; // Object selected from above
 
-    // Obtém a posição x do objeto de referência
-    var referenciaPosicaoX = objetoReferencia.left + objetoReferencia.width / 2;
+    // Gets the position of reference objects
+    var referenciaPosicaoX = objectReferencia.left + objectReferencia.width / 2;
+    var referenciaPosicaoY = objectReferencia.top - objectReferencia.height / 2;
 
-    // Obtém a posição y do objeto de referência
-    var referenciaPosicaoY = objetoReferencia.top - objetoReferencia.height / 2;
+    // Gets the measurements of the objects to be aligned
+    var larguraObjetoAlinhar = objectAlinhar.width;
+    var alturaObjetoAlinhar = objectAlinhar.height;
 
-    // Obtém a largura do objeto a ser alinhado
-    var larguraObjetoAlinhar = objetoAlinhar.width;
+    objectAlinhar.left = referenciaPosicaoX - larguraObjetoAlinhar / 2;
+    objectAlinhar.top = referenciaPosicaoY + (alturaObjetoAlinhar - alturaObjetoAlinhar);
 
-    // Obtém a altura do objeto a ser alinhado
-    var alturaObjetoAlinhar = objetoAlinhar.height;
-
-    // Define a posição x e y do objeto a ser alinhado com base nas posições x e y do objeto de referência e nas dimensões do objeto a ser alinhado
-    objetoAlinhar.left = referenciaPosicaoX - larguraObjetoAlinhar / 2;
-    objetoAlinhar.top =
-      referenciaPosicaoY + (alturaObjetoAlinhar - alturaObjetoAlinhar);
-
-    // Atualiza a tela para refletir o alinhamento
     app.redraw();
   }
 
-  // Função para mover o objeto para baixo
-  function moverObjeto(distancia) {
-    // Objeto a ser movido
-    var objeto = app.selection[1];
+  function moveObject(value) {
+    var object = app.selection[1];
+    var valueCM = value * cm;
 
-    // Converte a distância de centímetros para pontos
-    var distanciaPontos = distancia * 28.3465;
+    object.top += valueCM;
 
-    // Move o objeto para baixo
-    objeto.top += distanciaPontos;
-
-    // Atualiza a tela para refletir o movimento
     app.redraw();
   }
 
-  // Função para excluir o objeto
-  function excluirObjeto() {
-    // Objeto a ser excluído
-    var objeto = app.selection[0];
+  function deleteObject() {
+    var object = app.selection[0];
 
-    // Exclui o objeto
-    objeto.remove();
-    alert(
-      "AVISO!!!\n Se for camiseta POLO deixar pelo menos 1cm afastado do pique!"
-    );
+    object.remove();
+    alert("AVISO!!!\n Se for camiseta POLO deixar pelo menos 1cm afastado do pique!");
   }
 } else {
-  alert("Selecione um objeto para movê-lo para baixo!");
+  alert("Selecione um object para movê-lo para baixo!");
 }

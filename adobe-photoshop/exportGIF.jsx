@@ -4,19 +4,14 @@ Copyright © 2023
 https://linktr.ee/heroleam
 */
 
-// ----------------------------------------------------------------------------------- //
-
 var doc = app.activeDocument;
-var nomeArquivo = doc.name;
-var pastaOrigem = doc.path;
-var nomeSemExtensao = nomeArquivo.split(".")[0];
-var novoNome = prompt(
-  "Enter the file name (without extension):",
-  nomeSemExtensao
-);
+var fileName = doc.name;
+var folderOrigin = doc.path;
+var nameWithoutExtension = fileName.split(".")[0];
+var newName = prompt("Digite o nome do arquivo:", nameWithoutExtension);
 
-if (novoNome === null) {
-  alert("Export cancelled.");
+if (newName === null) {
+  alert("Exportação cancelada");
 } else {
   var options = new ExportOptionsSaveForWeb();
   options.format = SaveDocumentType.COMPUSERVEGIF;
@@ -25,11 +20,10 @@ if (novoNome === null) {
   options.dither = Dither.NOISE;
   options.transparency = true;
 
-  var nomeArquivoGIF = novoNome + ".gif";
-  var caminhoCompleto = new File(pastaOrigem + "/" + nomeArquivoGIF);
-
-  doc.exportDocument(caminhoCompleto, ExportType.SAVEFORWEB, options);
+  var fileNameWithExtension = newName + ".gif";
+  var fullPath = new File(folderOrigin + "/" + fileNameWithExtension);
+  doc.exportDocument(fullPath, ExportType.SAVEFORWEB, options);
   doc.close(SaveOptions.DONOTSAVECHANGES);
 
-  alert("GIF successfully exported as '" + nomeArquivoGIF + "'.");
+  alert("GIF exportado com sucesso como '" + fileNameWithExtension + "'.");
 }

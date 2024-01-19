@@ -4,27 +4,23 @@ Copyright © 2023
 https://linktr.ee/heroleam
 */
 
-// ----------------------------------------------------------------------------------- //
-
 var doc = app.activeDocument;
-var nomeArquivo = doc.name;
-var pastaOrigem = doc.path;
-var nomeSemExtensao = nomeArquivo.split(".")[0];
-var novoNome = prompt(
-  "Enter the file name (without extension):",
-  nomeSemExtensao
-);
-if (novoNome === null) {
-  alert("Export cancelled.");
+var fileName = doc.name;
+var folderOrigin = doc.path;
+var nameWithoutExtension = fileName.split(".")[0];
+var newName = prompt("Digite o nome do arquivo:", nameWithoutExtension);
+
+if (newName === null) {
+  alert("Exportação cancelada");
 } else {
   var options = new ExportOptionsSaveForWeb();
   options.format = SaveDocumentType.JPEG;
   options.format = SaveDocumentType.PNG;
   options.optimized = true;
 
-  var nomeArquivoComExtensao = novoNome + ".png";
-  var caminhoCompleto = new File(pastaOrigem + "/" + nomeArquivoComExtensao);
+  var fileNameWithExtension = newName + ".png";
+  var fullPath = new File(folderOrigin + "/" + fileNameWithExtension);
 
-  doc.exportDocument(caminhoCompleto, ExportType.SAVEFORWEB, options);
-  alert("PNG exported successfully!");
+  doc.exportDocument(fullPath, ExportType.SAVEFORWEB, options);
+  alert("Exportado com sucesso!");
 }

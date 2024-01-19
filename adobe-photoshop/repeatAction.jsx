@@ -9,31 +9,31 @@ https://linktr.ee/heroleam
 var dialog = new Window("dialog", "Digite as Informações");
 dialog.orientation = "column";
 
-var larguraInput = dialog.add("edittext", undefined, "Largura (cm)");
-larguraInput.characters = 10;
+var valueHorizontally = dialog.add("edittext", undefined, "Horizontal");
+valueHorizontally.characters = 10;
 
-var alturaInput = dialog.add("edittext", undefined, "Altura (cm)");
-alturaInput.characters = 10;
+var valueVertically = dialog.add("edittext", undefined, "Vertical");
+valueVertically.characters = 10;
 
-var repetirInput = dialog.add("edittext", undefined, "Repetições");
-repetirInput.characters = 10;
+var repeatInput = dialog.add("edittext", undefined, "Repetições");
+repeatInput.characters = 10;
 
-var botoes = dialog.add("group");
-var okButton = botoes.add("button", undefined, "OK");
-var cancelButton = botoes.add("button", undefined, "Cancelar");
+var buttons = dialog.add("group");
+var okButton = buttons.add("button", undefined, "OK");
+var cancelButton = buttons.add("button", undefined, "Cancelar");
 
 okButton.onClick = function() {
-    var larguraAjustada = parseFloat(larguraInput.text.replace(",", ".")) || 0;
-    var alturaAjustada = parseFloat(alturaInput.text.replace(",", ".")) || 0;
+    var horizontallyAdjustedValue = parseFloat(valueHorizontally.text.replace(",", ".")) || 0;
+    var verticallyAdjustedValue = parseFloat(valueVertically.text.replace(",", ".")) || 0;
 
-    var repetir = parseInt(repetirInput.text) || 1;
+    var repeat = parseInt(repeatInput.text) || 1;
 
-    for (var index = 0; index < repetir; index++) {
-        var camadaAtual = app.activeDocument.activeLayer;
+    for (var index = 0; index < repeat; index++) {
+        var currentLayer = app.activeDocument.activeLayer;
 
-        var duplicatedLayer = camadaAtual.duplicate();
-        duplicatedLayer.translate(larguraAjustada, alturaAjustada);
-        duplicatedLayer.name = camadaAtual.name;
+        var duplicatedLayer = currentLayer.duplicate();
+        duplicatedLayer.translate(horizontallyAdjustedValue, verticallyAdjustedValue);
+        duplicatedLayer.name = currentLayer.name;
 
         app.activeDocument.activeLayer = duplicatedLayer;
     }

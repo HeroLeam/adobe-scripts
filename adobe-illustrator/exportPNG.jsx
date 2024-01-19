@@ -4,30 +4,22 @@ Copyright © 2023
 https://linktr.ee/heroleam
 */
 
-// Script: Exporta PNG
-
-// ----------------------------------------------------------------------------------- //
-
 var doc = app.activeDocument;
-var nomeArquivo = doc.name;
-var pastaOrigem = doc.path;
+var fileName = doc.name;
+var folderOrigin = doc.path;
+var nameWithoutExtension = fileName.split(".")[0];
 
-var nomeSemExtensao = nomeArquivo.split(".")[0];
-
-var novoNome = prompt(
-  "Enter the file name (without extension):",
-  nomeSemExtensao
-);
-if (novoNome === null) {
-  alert("Export cancelled.");
+var newName = prompt("Digite o nome do arquivo:", nameWithoutExtension);
+if (newName === null) {
+  alert("Exportação cancelada");
 } else {
-  var pngOpcoes = new ExportOptionsPNG24();
-  pngOpcoes.antiAliasing = true;
-  pngOpcoes.transparency = true;
+  var exportOptions = new ExportOptionsPNG24();
+  exportOptions.antiAliasing = true;
+  exportOptions.transparency = true;
 
-  var nomeArquivoComExtensao = novoNome + ".png";
-  var caminhoCompleto = new File(pastaOrigem + "/" + nomeArquivoComExtensao);
+  var fileNameWIthExtension = newName + ".png";
+  var fullPath = new File(folderOrigin + "/" + fileNameWIthExtension);
 
-  app.activeDocument.exportFile(caminhoCompleto, ExportType.PNG24, pngOpcoes);
-  alert("PNG exported successfully!");
+  app.activeDocument.exportFile(fullPath, ExportType.PNG24, exportOptions);
+  alert("Exportado com sucesso!");
 }

@@ -4,30 +4,22 @@ Copyright © 2023
 https://linktr.ee/heroleam
 */
 
-// Script: Exporta JPG
-
-// ----------------------------------------------------------------------------------- //
-
 var doc = app.activeDocument;
-var nomeArquivo = doc.name;
-var pastaOrigem = doc.path;
+var fileName = doc.name;
+var folderOrigin = doc.path;
+var nameWithoutExtension = fileName.split(".")[0];
 
-var nomeSemExtensao = nomeArquivo.split(".")[0];
-
-var novoNome = prompt(
-  "Enter the file name (without extension):",
-  nomeSemExtensao
-);
-if (novoNome === null) {
-  alert("Export cancelled.");
+var newName = prompt("Digite o nome do arquivo:", nameWithoutExtension);
+if (newName === null) {
+  alert("Exportação cancelada");
 } else {
-  var jpgOpcoes = new ExportOptionsJPEG();
-  jpgOpcoes.qualitySetting = 100;
-  jpgOpcoes.resolution = 150;
+  var exportOptions = new ExportOptionsJPEG();
+  exportOptions.qualitySetting = 100;
+  exportOptions.resolution = 150;
 
-  var nomeArquivoComExtensao = novoNome + ".jpg";
-  var caminhoCompleto = new File(pastaOrigem + "/" + nomeArquivoComExtensao);
+  var fileNameWIthExtension = newName + ".jpg";
+  var fullPath = new File(folderOrigin + "/" + fileNameWIthExtension);
 
-  app.activeDocument.exportFile(caminhoCompleto, ExportType.JPEG, jpgOpcoes);
-  alert("JPG exported successfully!");
+  app.activeDocument.exportFile(fullPath, ExportType.JPEG, exportOptions);
+  alert("Exportado com sucesso!");
 }

@@ -50,8 +50,6 @@ if (app.selection.length === 0) {
     height = selectedObject.height;
   }
 
-  // ----------------------------------------------------------------------------------- //
-
   // Creates and sets a new horizontal line
   var horizontalLine = app.activeDocument.pathItems.add();
   horizontalLine.setEntirePath([
@@ -85,8 +83,6 @@ if (app.selection.length === 0) {
 
   verticalLine.position = [position[0] - cm, position[1]];
 
-  // ----------------------------------------------------------------------------------- //
-
   // Creates the text for the horizontal line
   var horizontalText = app.activeDocument.textFrames.add();
   horizontalText.contents = (width / cm).toFixed(1) + " cm";
@@ -119,8 +115,5 @@ if (app.selection.length === 0) {
     Justification.CENTER;
   verticalText.rotate(90);
 
-  // ----------------------------------------------------------------------------------- //
-
-  // Delete the temporary square
   square.remove();
 }

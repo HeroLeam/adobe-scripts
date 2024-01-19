@@ -4,65 +4,55 @@ Copyright © 2023
 https://linktr.ee/heroleam
 */
 
-// Script para salvar imagens em jpg por artboard
+// Script: Saves all Artboards in .jpg
 
-// ----------------------------------------------------------------------------------- //
-
-var arquivo = activeDocument.fullName;
-
-function salvarArtboardsBotao1() {
-  salvarArtboards([1], "_botao1");
-  dialog.close();
-}
-
-function salvarArtboardsBotao2() {
-  salvarArtboards([1, 7, 8], "_botao2");
-  dialog.close();
-}
-
-function salvarArtboardsBotao3() {
-  salvarArtboards([1, 4, 5, 6], "_botao3");
-  dialog.close();
-}
-
-function salvarArtboards(artboardIndices, sufixo) {
-  var jpgOpcoes = new ExportOptionsJPEG();
-  jpgOpcoes.qualitySetting = 50;
-  jpgOpcoes.artBoardClipping = true;
-
-  var doc = app.activeDocument;
-
-  for (var i = 0; i < artboardIndices.length; i++) {
-    var index = artboardIndices[i] - 1; // Subtrai 1 porque os índices começam em 0
-    var nomeArquivo = activeDocument.name.split(".")[0].replace(/\s/g, "_");
-    var artboard = doc.artboards[index];
-    var artboardNome = artboard.name.replace(/\s/g, "_").toLowerCase();
-    var nomeArquivoFinal = nomeArquivo + "_" + artboardNome + "_";
-
-    var jpgCaminho = new File(doc.path + "/" + nomeArquivoFinal + ".jpg");
-
-    // Define a artboard ativa
-    doc.artboards.setActiveArtboardIndex(index);
-
-    // Exporta o arquivo em JPEG
-    doc.exportFile(jpgCaminho, ExportType.JPEG, jpgOpcoes);
-  }
-
-  alert("Imagens salvas com sucesso!");
-}
-
-// Agora, você precisa criar botões para chamar as funções
-// Por exemplo, usando o ScriptUI:
-
+var doc = app.activeDocument;
+var file = activeDocument.fullName;
 var dialog = new Window("dialog", "Salvar Artboards");
 
-var botao1 = dialog.add("button", undefined, "Principal");
-botao1.onClick = salvarArtboardsBotao1;
+var buttonOne = dialog.add("button", undefined, "Principal");
+buttonOne.onClick = saveArtboardOne;
 
-var botao2 = dialog.add("button", undefined, "2 Sortimentos");
-botao2.onClick = salvarArtboardsBotao2;
+var buttonTwo = dialog.add("button", undefined, "2 Sortimentos");
+buttonTwo.onClick = saveArtboardTwo;
 
-var botao3 = dialog.add("button", undefined, "3 Sortimentos");
-botao3.onClick = salvarArtboardsBotao3;
+var buttonThree = dialog.add("button", undefined, "3 Sortimentos");
+buttonThree.onClick = saveArtboardThree;
 
 dialog.show();
+
+function saveArtboardOne() {
+  saveArtboards([1], "_buttonOne");
+  dialog.close();
+}
+
+function saveArtboardTwo() {
+  saveArtboards([1, 7, 8], "_buttonTwo");
+  dialog.close();
+}
+
+function saveArtboardThree() {
+  saveArtboards([1, 4, 5, 6], "_buttonThree");
+  dialog.close();
+}
+
+function saveArtboards(artboardIndex, suffix) {
+  var jpgOptions = new ExportOptionsJPEG();
+  jpgOptions.qualitySetting = 50;
+  jpgOptions.artBoardClipping = true;
+
+  for (var i = 0; i < artboardIndex.length; i++) {
+    var index = artboardIndex[i] - 1; // Subtract 1 because indices start at 0
+    var fileName = activeDocument.name.split(".")[0].replace(/\s/g, "_");
+    var artboard = doc.artboards[index];
+    var artboardName = artboard.name.replace(/\s/g, "_").toLowerCase();
+    var fileFinalName = fileName + "_" + artboardName + "_";
+
+    var jpgPath = new File(doc.path + "/" + fileFinalName + ".jpg");
+
+    doc.artboards.setActiveArtboardIndex(index);
+
+    doc.exportFile(jpgPath, ExportType.JPEG, jpgOptions);
+  }
+  alert("Imagens salvas com sucesso!");
+}
