@@ -15,8 +15,8 @@ if (newName === null) {
 } else {
   var options = new ExportOptionsSaveForWeb();
   options.format = SaveDocumentType.JPEG;
+  options.includeProfile = true;
   options.optimized = true;
-  options.resolution = 72;
   options.quality = 100;
 
   var fileNameWithExtension = newName + ".jpg";

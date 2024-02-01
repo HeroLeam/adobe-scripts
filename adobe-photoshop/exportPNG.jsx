@@ -14,9 +14,10 @@ if (newName === null) {
   alert("Exportação cancelada");
 } else {
   var options = new ExportOptionsSaveForWeb();
-  options.format = SaveDocumentType.JPEG;
   options.format = SaveDocumentType.PNG;
+  options.includeProfile = true;
   options.optimized = true;
+  options.quality = 100;
 
   var fileNameWithExtension = newName + ".png";
   var fullPath = new File(folderOrigin + "/" + fileNameWithExtension);
