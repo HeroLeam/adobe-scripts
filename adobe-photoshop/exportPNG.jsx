@@ -14,7 +14,7 @@ if (newName === null) {
   alert("Exportação cancelada");
 } else {
   var options = new ExportOptionsSaveForWeb();
-  options.format = SaveDocumentType.PNG;
+  options.format = SaveDocumentType.JPEG;
   options.includeProfile = true;
   options.optimized = true;
   options.quality = 100;
