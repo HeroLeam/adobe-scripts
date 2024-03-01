@@ -1,7 +1,7 @@
 /*
 Author: Thiago Leoni Amaral
 Copyright © 2023
-https://linktr.ee/heroleam
+https://heroleam.github.io/herofield
 */
 
 // Script: Positions object to the top and 1 cm outside the artboard

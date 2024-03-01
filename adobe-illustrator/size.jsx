@@ -1,7 +1,7 @@
 /*
 Author: Thiago Leoni Amaral
 Copyright © 2023
-https://linktr.ee/heroleam
+https://heroleam.github.io/herofield
 */
 
 // Script: Creates measurements of the selected object
