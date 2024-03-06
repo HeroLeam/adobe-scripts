@@ -4,81 +4,157 @@ Copyright © 2023
 https://heroleam.github.io/herofield
 */
 
-// Script: Localiza aplique para gabarito estilo bolso
+// Script: Finds appliqué for pocket style template
 
-var cm = 28.3465
+// ----------------------------------------------------------------------------------- //
+
+var cm = 28.3465;
 
 if (app.selection.length > 1) {
-  // Criação do painel de escolha
-  var painel = new Window("dialog", "Painel de Escolha");
+  var painel = new Window("dialog", "Painel de Tamanhos");
 
-  var buttonOne = painel.add("button", undefined, "PB - MB - GB");
-  buttonOne.onClick = function () {
+  var button1 = painel.add("button", undefined, "PB - MB");
+  button1.onClick = function () {
     alignObjects();
-    moveObject(-9.5);
+    moveObject(-9);
     deleteObject();
     painel.close();
   };
 
-  var buttonTwo = painel.add("button", undefined, "1 - 2 - 3");
-  buttonTwo.onClick = function () {
+  var button2 = painel.add("button", undefined, "GB - 1");
+  button2.onClick = function () {
     alignObjects();
-    moveObject(-11.5);
+    moveObject(-10);
     deleteObject();
     painel.close();
   };
 
-  var buttonThree = painel.add("button", undefined, "4 - 6 - 8");
-  buttonThree.onClick = function () {
+  var button3 = painel.add("button", undefined, "2");
+  button3.onClick = function () {
+    alignObjects();
+    moveObject(-11);
+    deleteObject();
+    painel.close();
+  };
+
+  var button4 = painel.add("button", undefined, "3");
+  button4.onClick = function () {
+    alignObjects();
+    moveObject(-12);
+    deleteObject();
+    painel.close();
+  };
+
+  var button5 = painel.add("button", undefined, "4");
+  button5.onClick = function () {
     alignObjects();
     moveObject(-13);
     deleteObject();
     painel.close();
   };
 
-  var buttonFour = painel.add("button", undefined, "10 - 12 - 14");
-  buttonFour.onClick = function () {
+  var button6 = painel.add("button", undefined, "6");
+  button6.onClick = function () {
     alignObjects();
-    moveObject(-15.5);
+    moveObject(-14);
+    deleteObject();
+    painel.close();
+  };
+
+  var button7 = painel.add("button", undefined, "8");
+  button7.onClick = function () {
+    alignObjects();
+    moveObject(-15);
+    deleteObject();
+    painel.close();
+  };
+
+  var button8 = painel.add("button", undefined, "10");
+  button8.onClick = function () {
+    alignObjects();
+    moveObject(-16);
+    deleteObject();
+    painel.close();
+  };
+
+  var button9 = painel.add("button", undefined, "12");
+  button9.onClick = function () {
+    alignObjects();
+    moveObject(-17);
+    deleteObject();
+    painel.close();
+  };
+
+  var button10 = painel.add("button", undefined, "14");
+  button10.onClick = function () {
+    alignObjects();
+    moveObject(-18);
+    deleteObject();
+    painel.close();
+  };
+
+  var button11 = painel.add("button", undefined, "16");
+  button11.onClick = function () {
+    alignObjects();
+    moveObject(-19);
+    deleteObject();
+    painel.close();
+  };
+
+  var button12 = painel.add("button", undefined, "18");
+  button12.onClick = function () {
+    alignObjects();
+    moveObject(-20);
+    deleteObject();
+    painel.close();
+  };
+
+  var button13 = painel.add("button", undefined, "20");
+  button13.onClick = function () {
+    alignObjects();
+    moveObject(-21);
     deleteObject();
     painel.close();
   };
 
   painel.show();
 
+  // Function to align objects
   function alignObjects() {
-    var objectAlinhar = app.selection[1]; // Object selected from below
-    var objectReferencia = app.selection[0]; // Object selected from above
+    var objectAlign = app.selection[1];
+    var objectReference = app.selection[0];
+    var referencePositionX = objectReference.left + objectReference.width / 2;
+    var referencePositionY = objectReference.top - objectReference.height / 2;
+    var widthObjectAlign = objectAlign.width;
+    var heightObjectAlign = objectAlign.height;
 
-    // Gets the position of reference objects
-    var referenciaPosicaoX = objectReferencia.left + objectReferencia.width / 2;
-    var referenciaPosicaoY = objectReferencia.top - objectReferencia.height / 2;
-
-    // Gets the measurements of the objects to be aligned
-    var larguraObjetoAlinhar = objectAlinhar.width;
-    var alturaObjetoAlinhar = objectAlinhar.height;
-
-    objectAlinhar.left = referenciaPosicaoX - larguraObjetoAlinhar / 2;
-    objectAlinhar.top = referenciaPosicaoY + (alturaObjetoAlinhar - alturaObjetoAlinhar);
+    objectAlign.left = referencePositionX - widthObjectAlign / 2;
+    objectAlign.top = referencePositionY + (heightObjectAlign - heightObjectAlign);
 
     app.redraw();
   }
 
-  function moveObject(value) {
+  // Function to move the object down
+  function moveObject(distance) {
     var object = app.selection[1];
-    var valueCM = value * cm;
+    var distanceCM = distance * cm;
 
-    object.top += valueCM;
+    object.top += distanceCM;
 
     app.redraw();
   }
 
+  // Function to delete the object
   function deleteObject() {
     var object = app.selection[0];
 
     object.remove();
-    alert("AVISO!!!\n Se for camiseta POLO deixar pelo menos 1cm afastado do pique!");
+    alert(
+      "AVISO!!!\n Se for camiseta POLO deixar pelo menos 1cm afastado do pique!"
+    );
   }
+
+
 } else {
   alert("Selecione um object para movê-lo para baixo!");
 }
