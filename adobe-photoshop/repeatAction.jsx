@@ -1,7 +1,7 @@
 /*
 Author: Thiago Leoni Amaral
 Copyright © 2023
-https://heroleam.github.io/herofield
+https://heroleam.github.io/portfolio
 */
 
 // Script: Duplicate a layer and move the entered distance
