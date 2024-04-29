@@ -9,7 +9,7 @@ https://heroleam.github.io/portfolio
 var doc = app.activeDocument;
 var layer = doc.activeLayer;
 var artboard = doc.artboards[doc.artboards.getActiveArtboardIndex(1)];
-var layerName = "Background"
+var layerName = "Fundo"
 
 var backgroundLayer = doc.layers.add();
 backgroundLayer.name = layerName;
