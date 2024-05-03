@@ -27,5 +27,5 @@ if (app.selection.length === 0) {
     text.textRange.characterAttributes.textFont = app.textFonts.getByName("ArialMT");
     text.textRange.paragraphAttributes.justification = Justification.CENTER;
     text.left = averageXPosition - (text.width / 2);
-    text.top = doc.selection[0].position[1] + 10;
+    text.top = doc.selection[0].position[1] + 15;
 }
