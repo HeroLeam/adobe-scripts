@@ -1,8 +1,13 @@
 /*
 Author: Thiago Leoni Amaral
 Copyright © 2023
-https://heroleam.github.io/portfolio
+https://linktr.ee/heroleam
 */
+
+// Script: Export PNG
+
+// ----------------------------------------------------------------------------------- //
+
 
 var doc = app.activeDocument;
 var fileName = doc.name;
