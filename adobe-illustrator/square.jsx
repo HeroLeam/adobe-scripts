@@ -1,8 +1,12 @@
 /*
 Author: Thiago Leoni Amaral
 Copyright © 2023
-https://heroleam.github.io/portfolio
+https://linktr.ee/heroleam
 */
+
+// Script: Creates a square the size of the selected object
+
+// ----------------------------------------------------------------------------------- //
 
 var doc = app.activeDocument;
 var element = doc.selection[0];
@@ -10,8 +14,6 @@ var elementX = element.left;
 var elementY = element.top;
 var elementWidth = element.width;
 var elementHeight = element.height;
-// element.remove();
-
 var square = doc.activeLayer.pathItems.rectangle(
   elementY,
   elementX,
