@@ -1,13 +1,15 @@
 /*
 Author: Thiago Leoni Amaral
 Copyright © 2023
-https://heroleam.github.io/portfolio
+https://linktr.ee/heroleam
 */
 
 // Script: Creates measurements of the selected object
 
+// ----------------------------------------------------------------------------------- //
+
 if (app.selection.length === 0) {
-  alert("Please select an object.");
+  alert("Por favor, selecione um objeto.");
 } else {
   var doc = app.activeDocument;
   var element = doc.selection[0];
@@ -16,7 +18,27 @@ if (app.selection.length === 0) {
   var elementY = element.top;
   var elementWidth = element.width;
   var elementHeight = element.height;
-  var layerName = "Size"
+  var layerName = "Tamanho"
+  var layerExists = false;
+
+  // Checks if the "Tamanho" layer already exists
+  for (var i = 0; i < doc.layers.length; i++) {
+    if (doc.layers[i].name === layerName) {
+      layerExists = true;
+      break;
+    }
+  }
+
+  // If the layer does not exist, create it
+  if (!layerExists) {
+    var newLayer = doc.layers.add();
+    newLayer.name = layerName;
+    var lightBlueColor = new RGBColor();
+    lightBlueColor.red = 79;
+    lightBlueColor.green = 128;
+    lightBlueColor.blue = 255;
+    newLayer.color = lightBlueColor;
+  }
 
   var square = doc.activeLayer.pathItems.rectangle(
     elementY,
@@ -28,14 +50,6 @@ if (app.selection.length === 0) {
   square.filled = false;
   doc.selection = null;
   square.selected = true;
-
-  var newLayer = app.activeDocument.layers.add();
-  newLayer.name = layerName;
-  var lightBlueColor = new RGBColor();
-  lightBlueColor.red = 79;
-  lightBlueColor.green = 128;
-  lightBlueColor.blue = 255;
-  newLayer.color = lightBlueColor;
 
   var selectedObject = app.selection[0];
 
@@ -49,6 +63,8 @@ if (app.selection.length === 0) {
     width = selectedObject.width;
     height = selectedObject.height;
   }
+
+  // ----------------------------------------------------------------------------------- //
 
   // Creates and sets a new horizontal line
   var horizontalLine = app.activeDocument.pathItems.add();
@@ -83,37 +99,45 @@ if (app.selection.length === 0) {
 
   verticalLine.position = [position[0] - cm, position[1]];
 
+  // ----------------------------------------------------------------------------------- //
+
   // Creates the text for the horizontal line
   var horizontalText = app.activeDocument.textFrames.add();
-  horizontalText.contents = (width / cm).toFixed(1) + " cm";
-  horizontalText.position = [
-    position[0] + width / 2,
-    position[1] - (height + cm * 2),
-  ];
+  horizontalText.contents = (width / cm).toFixed(1).replace('.', ',') + " cm";
+  horizontalText.position = [position[0] + width / 2, position[1] - (height + cm * 2),];
   horizontalText.textRange.characterAttributes.fillColor = new RGBColor();
   horizontalText.textRange.characterAttributes.fillColor.red = 255;
   horizontalText.textRange.characterAttributes.fillColor.green = 0;
   horizontalText.textRange.characterAttributes.fillColor.blue = 0;
   horizontalText.textRange.characterAttributes.size = 25;
-  horizontalText.textRange.characterAttributes.textFont =
-    app.textFonts.getByName("ArialMT");
-  horizontalText.textRange.paragraphAttributes.justification =
-    Justification.CENTER;
+  horizontalText.textRange.characterAttributes.textFont = app.textFonts.getByName("ArialMT");
+  horizontalText.textRange.paragraphAttributes.justification = Justification.CENTER;
 
   // Creates the text for the vertical line
   var verticalText = app.activeDocument.textFrames.add();
-  verticalText.contents = (height / cm).toFixed(1) + " cm";
+  verticalText.contents = (height / cm).toFixed(1).replace('.', ',') + " cm";
   verticalText.position = [position[0] - cm * 2, position[1] - height / 2];
   verticalText.textRange.characterAttributes.fillColor = new RGBColor();
   verticalText.textRange.characterAttributes.fillColor.red = 255;
   verticalText.textRange.characterAttributes.fillColor.green = 0;
   verticalText.textRange.characterAttributes.fillColor.blue = 0;
   verticalText.textRange.characterAttributes.size = 25;
-  verticalText.textRange.characterAttributes.textFont =
-    app.textFonts.getByName("ArialMT");
-  verticalText.textRange.paragraphAttributes.justification =
-    Justification.CENTER;
+  verticalText.textRange.characterAttributes.textFont = app.textFonts.getByName("ArialMT");
+  verticalText.textRange.paragraphAttributes.justification = Justification.CENTER;
   verticalText.rotate(90);
 
+  // ----------------------------------------------------------------------------------- //
+
+  // Delete the temporary square
   square.remove();
+
+  // Group the measurements
+  var measurementsGroup = app.activeDocument.groupItems.add();
+  measurementsGroup.name = "Medidas";
+  measurementsGroup.left = elementX;
+  measurementsGroup.top = elementY;
+  horizontalLine.move(measurementsGroup, ElementPlacement.INSIDE);
+  verticalLine.move(measurementsGroup, ElementPlacement.INSIDE);
+  horizontalText.move(measurementsGroup, ElementPlacement.INSIDE);
+  verticalText.move(measurementsGroup, ElementPlacement.INSIDE);
 }
