@@ -1,13 +1,10 @@
 /*
 Author: Thiago Leoni Amaral
-Copyright © 2024
-https://linktr.ee/heroleam
+Copyright © 2023
+https://heroleam.github.io/portfolio
 */
 
 // Script: Export PDF
-
-// ----------------------------------------------------------------------------------- //
-
 
 var doc = app.activeDocument;
 var fileName = doc.name;

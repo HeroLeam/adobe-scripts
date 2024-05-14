@@ -1,12 +1,10 @@
 /*
 Author: Thiago Leoni Amaral
 Copyright © 2023
-https://linktr.ee/heroleam
+https://heroleam.github.io/portfolio
 */
 
 // Script: Export DXF
-
-// ----------------------------------------------------------------------------------- //
 
 var doc = app.activeDocument;
 var fileName = doc.name;

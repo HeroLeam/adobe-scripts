@@ -1,12 +1,10 @@
 /*
 Author: Thiago Leoni Amaral
 Copyright © 2023
-https://linktr.ee/heroleam
+https://heroleam.github.io/portfolio
 */
 
 // Script: Creates a square the size of the selected object
-
-// ----------------------------------------------------------------------------------- //
 
 var doc = app.activeDocument;
 var element = doc.selection[0];

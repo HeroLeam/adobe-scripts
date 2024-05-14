@@ -4,9 +4,7 @@ Copyright © 2023
 https://heroleam.github.io/portfolio
 */
 
-// Script: Finds appliqué for pocket style template
-
-// ----------------------------------------------------------------------------------- //
+// Script: Locates applique for pocket style template
 
 var cm = 28.3465;
 

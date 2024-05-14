@@ -4,6 +4,8 @@ Copyright © 2023
 https://heroleam.github.io/portfolio
 */
 
+// Script: Exports file to Deckboard app image
+
 var doc = app.activeDocument;
 var fileName = doc.name;
 var folderOrigin = doc.path;

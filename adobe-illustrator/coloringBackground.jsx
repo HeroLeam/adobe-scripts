@@ -18,7 +18,7 @@ if (app.selection.length === 0) {
   var elementHeight = element.height + cm * 2;
 
   doc.selection = null;
-  
+
   var square = doc.activeLayer.pathItems.rectangle(
     elementY + (cm * 2) / 2,
     elementX - (cm * 2) / 2,

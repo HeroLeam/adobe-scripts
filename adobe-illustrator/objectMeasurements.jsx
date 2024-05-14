@@ -1,12 +1,10 @@
 /*
 Author: Thiago Leoni Amaral
 Copyright © 2023
-https://linktr.ee/heroleam
+https://heroleam.github.io/portfolio
 */
 
 // Script: Creates measurements of the selected object
-
-// ----------------------------------------------------------------------------------- //
 
 if (app.selection.length === 0) {
   alert("Por favor, selecione um objeto.");
