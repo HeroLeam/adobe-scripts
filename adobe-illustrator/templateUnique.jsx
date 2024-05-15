@@ -19,6 +19,7 @@ var pathObjectHeight = pathObject.height;
 var moldSizeOptions = [
   "U",
   "RN - PB - MB - GB",
+  "PB - MB - GB",
   "PB - MB - GB - 1T - 2T - 3T",
   "PB - MB - GB - 1T - 2T - 3T - 4 - 6 - 8",
   "1T - 2T",
