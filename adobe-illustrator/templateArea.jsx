@@ -21,47 +21,64 @@ if (doc.selection.length === 0) {
 
   // Creates an array with additional texts
   var submenus = {
-    "ÚNICO\n(Tamanhos únicos)":
+    "ÚNICOS\n(Tamanhos únicos)":
       [
-        "U"
+        "U",
+        "RN",
+        "PB",
+        "1T",
+        "2T",
+        "3T",
+        "4",
+        "6",
+        "8",
+        "10",
+        "12",
+        "14",
+        "16",
+        "18",
+        "20",
+        "P",
+        "M",
+        "G"
       ],
     "BEBÊ\n(№12 | №14 | №20 | №30)":
       [
         "RN - PB - MB - GB",
-        "PB - MB - GB",
+        "PB - MB - GB"
       ],
     "PRIMEIROS PASSOS\n(№17 | №19 | №21 | №31)":
       [
-        "1T - 2T",
         "1T - 2T - 3T",
-        "1T - 2T - 3T - 4 - 6",
-        "1T - 2T - 3T - 4 - 6 - 8",
-        "3T - 4",
-        "4 - 6",
-        "4 - 6 - 8",
+        "1T - 2T - 3T - 4 - 6 - 8"
       ],
     "INFANTIL\n(№22 | №32 | №43 | №46)":
       [
-        "1T - 2T - 3T - 4 - 6 - 8 - 10 - 12 - 14",
-        "4 - 6 - 8 - 10",
-        "4 - 6 - 8 - 10 - 12 - 14",
+        "4 - 6 - 8 - 10 - 12 - 14"
       ],
     "JUVENIL\n(№56 | №61)":
       [
         "12 - 14 - 16 - 18",
         "12 - 14 - 16 - 18 - 20",
-        "14 - 16 - 18",
-        "16 - 18",
-        "20",
         "P - M - G"
       ],
-    "TODOS\n(Todas as numerações)":
+    "QUEBRAS\n(Tamanhos quebrados)":
       [
         "PB - MB - GB - 1T - 2T - 3T",
         "PB - MB - GB - 1T - 2T - 3T - 4 - 6 - 8",
+        "1T - 2T",
+        "1T - 2T - 3T - 4 - 6",
+        "1T - 2T - 3T - 4 - 6 - 8",
         "1T - 2T - 3T - 4 - 6 - 8 - 10",
         "1T - 2T - 3T - 4 - 6 - 8 - 10 - 12 - 14",
         "1T - 2T - 3T - 4 - 6 - 8 - 10 - 12 - 14 - 16 - 18",
+        "3T - 4",
+        "4 - 6",
+        "4 - 6 - 8",
+        "4 - 6 - 8 - 10",
+        "10 - 12 - 14",
+        "14 - 16 - 18",
+        "16 - 18"
       ]
   };
 
@@ -116,9 +133,15 @@ if (doc.selection.length === 0) {
       buttonPanel.orientation = "column";
       buttonPanel.alignChildren = "center";
 
-      // Create buttons and add them to the panel
+      // Create subpanels for buttons with a max of 5 buttons per row
+      var subPanel;
       for (var i = 0; i < selectedSizes.length; i++) {
-        var button = buttonPanel.add("button", undefined, selectedSizes[i]);
+        if (i % 3 === 0) {
+          subPanel = buttonPanel.add("group");
+          subPanel.orientation = "row";
+          subPanel.alignChildren = "center";
+        }
+        var button = subPanel.add("button", undefined, selectedSizes[i]);
         button.preferredSize = [300, 40];
         button.onClick = function () {
           if (this.text !== "Cancelar") {
@@ -194,7 +217,12 @@ if (doc.selection.length === 0) {
             var exportFileName = docName.substring(0, docName.lastIndexOf(".")) + ".dxf";
             var exportFolder = app.activeDocument.path;
             try {
-              var dxfPath = new File(exportFolder + "/" + exportFileName.replace("_", "").replace(" ", "").replace(/bordado/i, "_gabarito").replace(/gabarito/i, "_gabarito").replace(/aviamento/i, "_gabarito"));
+              var dxfPath = new File(exportFolder + "/" + exportFileName
+                .replace(/_/g, "")
+                .replace(/ /g, "_")
+                .replace(/bordado/i, "_gabarito")
+                .replace(/gabarito/i, "_gabarito")
+                .replace(/aviamento/i, "_gabarito"));
               app.activeDocument.exportFile(dxfPath, ExportType.AUTOCAD, exportOptions);
             } catch (e) {
               alert("Erro ao exportar arquivo: " + e);
