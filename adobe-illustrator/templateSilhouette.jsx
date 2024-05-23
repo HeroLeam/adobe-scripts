@@ -103,7 +103,7 @@ if (doc.selection.length === 0) {
   var buttons = [];
   for (var label in submenus) {
     var button = buttonPanel.add("button", undefined, label);
-    button.preferredSize = [300, 60];
+    button.preferredSize = [200, 60];
     button.alignment = "center";
     buttons.push(button);
   }
@@ -142,7 +142,7 @@ if (doc.selection.length === 0) {
           subPanel.alignChildren = "center";
         }
         var button = subPanel.add("button", undefined, selectedSizes[i]);
-        button.preferredSize = [300, 40];
+        button.preferredSize = [280, 25];
         button.onClick = function () {
           if (this.text !== "Cancelar") {
             // Remove previous additional text if any
