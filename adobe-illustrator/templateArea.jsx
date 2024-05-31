@@ -40,7 +40,10 @@ if (doc.selection.length === 0) {
         "20",
         "P",
         "M",
-        "G"
+        "G",
+        "GG",
+        "XGG",
+        "XXGG"
       ],
     "BEBÊ\n(№12 | №14 | №20 | №30)":
       [
@@ -62,6 +65,11 @@ if (doc.selection.length === 0) {
         "12 - 14 - 16 - 18 - 20",
         "P - M - G"
       ],
+      "ADULTO\n(№92)":
+      [
+        "P - M - G",
+        "P - M - G - GG - XGG - XXGG"
+      ],
     "QUEBRAS\n(Tamanhos quebrados)":
       [
         "PB - MB - GB - 1T - 2T - 3T",
@@ -77,6 +85,7 @@ if (doc.selection.length === 0) {
         "4 - 6 - 8",
         "4 - 6 - 8 - 10",
         "10 - 12 - 14",
+        "12 - 14 - 16 - P - M - G - GG - XGG - XXGG",
         "14 - 16 - 18",
         "16 - 18"
       ]

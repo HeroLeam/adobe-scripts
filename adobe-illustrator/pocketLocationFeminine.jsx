@@ -50,8 +50,17 @@ if (app.selection.length > 1) {
     subMenuNormal.preferredSize.width = 300;
     subMenuNormal.alignChildren = "fill";
 
-    var buttonOne = subMenuNormal.add("button", undefined, "PB - MB");
-    buttonOne.onClick = function () {
+    var button01 = subMenuNormal.add("button", undefined, "RN");
+    button01.onClick = function () {
+      alignObjects();
+      moveObjects(-8.5);
+      deleteObject();
+      subMenuNormal.close();
+      menuPanel.close();
+    };
+
+    var button02 = subMenuNormal.add("button", undefined, "PB - MB");
+    button02.onClick = function () {
       alignObjects();
       moveObjects(-9.5);
       deleteObject();
@@ -59,8 +68,8 @@ if (app.selection.length > 1) {
       menuPanel.close();
     };
 
-    var buttonTwo = subMenuNormal.add("button", undefined, "GB - 1");
-    buttonTwo.onClick = function () {
+    var button03 = subMenuNormal.add("button", undefined, "GB - 1");
+    button03.onClick = function () {
       alignObjects();
       moveObjects(-10.5);
       deleteObject();
@@ -68,8 +77,8 @@ if (app.selection.length > 1) {
       menuPanel.close();
     };
 
-    var buttonThree = subMenuNormal.add("button", undefined, "2 - 3");
-    buttonThree.onClick = function () {
+    var button04 = subMenuNormal.add("button", undefined, "2 - 3");
+    button04.onClick = function () {
       alignObjects();
       moveObjects(-11.5);
       deleteObject();
@@ -77,8 +86,8 @@ if (app.selection.length > 1) {
       menuPanel.close();
     };
 
-    var buttonFour = subMenuNormal.add("button", undefined, "4 - 6");
-    buttonFour.onClick = function () {
+    var button05 = subMenuNormal.add("button", undefined, "4 - 6");
+    button05.onClick = function () {
       alignObjects();
       moveObjects(-13.5);
       deleteObject();
@@ -86,8 +95,8 @@ if (app.selection.length > 1) {
       menuPanel.close();
     };
 
-    var buttonFive = subMenuNormal.add("button", undefined, "8 - 10");
-    buttonFive.onClick = function () {
+    var button06 = subMenuNormal.add("button", undefined, "8 - 10");
+    button06.onClick = function () {
       alignObjects();
       moveObjects(-14.5);
       deleteObject();
@@ -95,8 +104,8 @@ if (app.selection.length > 1) {
       menuPanel.close();
     };
 
-    var buttonSix = subMenuNormal.add("button", undefined, "12 - 14");
-    buttonSix.onClick = function () {
+    var button07 = subMenuNormal.add("button", undefined, "12 - 14");
+    button07.onClick = function () {
       alignObjects();
       moveObjects(-16.5);
       deleteObject();
@@ -104,10 +113,46 @@ if (app.selection.length > 1) {
       menuPanel.close();
     };
 
-    var buttonSeven = subMenuNormal.add("button", undefined, "16 - 18 - 20");
-    buttonSeven.onClick = function () {
+    var button08 = subMenuNormal.add("button", undefined, "16 - 18 - 20 - P - M");
+    button08.onClick = function () {
       alignObjects();
       moveObjects(-18.5);
+      deleteObject();
+      subMenuNormal.close();
+      menuPanel.close();
+    };
+
+    var button09 = subMenuNormal.add("button", undefined, "G");
+    button09.onClick = function () {
+      alignObjects();
+      moveObjects(-20.5);
+      deleteObject();
+      subMenuNormal.close();
+      menuPanel.close();
+    };
+
+    var button10 = subMenuNormal.add("button", undefined, "GG");
+    button10.onClick = function () {
+      alignObjects();
+      moveObjects(-21.5);
+      deleteObject();
+      subMenuNormal.close();
+      menuPanel.close();
+    };
+
+    var button11 = subMenuNormal.add("button", undefined, "XGG");
+    button11.onClick = function () {
+      alignObjects();
+      moveObjects(-22.5);
+      deleteObject();
+      subMenuNormal.close();
+      menuPanel.close();
+    };
+
+    var button12 = subMenuNormal.add("button", undefined, "XXGG");
+    button12.onClick = function () {
+      alignObjects();
+      moveObjects(-23.5);
       deleteObject();
       subMenuNormal.close();
       menuPanel.close();
@@ -127,8 +172,17 @@ if (app.selection.length > 1) {
     subMenuRaglan.preferredSize.width = 300;
     subMenuRaglan.alignChildren = "fill";
 
-    var buttonOne = subMenuRaglan.add("button", undefined, "PB - MB");
-    buttonOne.onClick = function () {
+    var button01 = subMenuRaglan.add("button", undefined, "RN");
+    button01.onClick = function () {
+      alignObjects();
+      moveObjects(-8.5);
+      deleteObject();
+      subMenuRaglan.close();
+      menuPanel.close();
+    };
+
+    var button02 = subMenuRaglan.add("button", undefined, "PB - MB");
+    button02.onClick = function () {
       raglan();
       alignObjects();
       moveObjects(-9.5);
@@ -137,8 +191,8 @@ if (app.selection.length > 1) {
       menuPanel.close();
     };
 
-    var buttonTwo = subMenuRaglan.add("button", undefined, "GB - 1");
-    buttonTwo.onClick = function () {
+    var button03 = subMenuRaglan.add("button", undefined, "GB - 1");
+    button03.onClick = function () {
       raglan();
       alignObjects();
       moveObjects(-10.5);
@@ -147,8 +201,8 @@ if (app.selection.length > 1) {
       menuPanel.close();
     };
 
-    var buttonThree = subMenuRaglan.add("button", undefined, "2 - 3");
-    buttonThree.onClick = function () {
+    var button04 = subMenuRaglan.add("button", undefined, "2 - 3");
+    button04.onClick = function () {
       raglan();
       alignObjects();
       moveObjects(-11.5);
@@ -157,8 +211,8 @@ if (app.selection.length > 1) {
       menuPanel.close();
     };
 
-    var buttonFour = subMenuRaglan.add("button", undefined, "4 - 6");
-    buttonFour.onClick = function () {
+    var button05 = subMenuRaglan.add("button", undefined, "4 - 6");
+    button05.onClick = function () {
       raglan();
       alignObjects();
       moveObjects(-13.5);
@@ -167,8 +221,8 @@ if (app.selection.length > 1) {
       menuPanel.close();
     };
 
-    var buttonFive = subMenuRaglan.add("button", undefined, "8 - 10");
-    buttonFive.onClick = function () {
+    var button06 = subMenuRaglan.add("button", undefined, "8 - 10");
+    button06.onClick = function () {
       raglan();
       alignObjects();
       moveObjects(-14.5);
@@ -177,8 +231,8 @@ if (app.selection.length > 1) {
       menuPanel.close();
     };
 
-    var buttonSix = subMenuRaglan.add("button", undefined, "12 - 14");
-    buttonSix.onClick = function () {
+    var button07 = subMenuRaglan.add("button", undefined, "12 - 14");
+    button07.onClick = function () {
       raglan();
       alignObjects();
       moveObjects(-16.5);
@@ -187,13 +241,49 @@ if (app.selection.length > 1) {
       menuPanel.close();
     };
 
-    var buttonSeven = subMenuRaglan.add("button", undefined, "16 - 18 - 20");
-    buttonSeven.onClick = function () {
+    var button08 = subMenuRaglan.add("button", undefined, "16 - 18 - 20 - P - M");
+    button08.onClick = function () {
       raglan();
       alignObjects();
       moveObjects(-18.5);
       deleteObject();
       subMenuRaglan.close();
+      menuPanel.close();
+    };
+
+    var button09 = subMenuNormal.add("button", undefined, "G");
+    button09.onClick = function () {
+      alignObjects();
+      moveObjects(-20.5);
+      deleteObject();
+      subMenuNormal.close();
+      menuPanel.close();
+    };
+
+    var button10 = subMenuNormal.add("button", undefined, "GG");
+    button10.onClick = function () {
+      alignObjects();
+      moveObjects(-21.5);
+      deleteObject();
+      subMenuNormal.close();
+      menuPanel.close();
+    };
+
+    var button11 = subMenuNormal.add("button", undefined, "XGG");
+    button11.onClick = function () {
+      alignObjects();
+      moveObjects(-22.5);
+      deleteObject();
+      subMenuNormal.close();
+      menuPanel.close();
+    };
+
+    var button12 = subMenuNormal.add("button", undefined, "XXGG");
+    button12.onClick = function () {
+      alignObjects();
+      moveObjects(-23.5);
+      deleteObject();
+      subMenuNormal.close();
       menuPanel.close();
     };
 
@@ -249,7 +339,7 @@ if (app.selection.length > 1) {
     var objeto = app.selection[0];
     objeto.remove();
   }
-  
+
 } else {
   alert("Selecione um objeto para localiza-lo!");
 }
