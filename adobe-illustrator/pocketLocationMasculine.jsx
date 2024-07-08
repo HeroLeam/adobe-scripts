@@ -89,7 +89,7 @@ if (app.selection.length > 1) {
     var button05 = subMenuNormal.add("button", undefined, "3");
     button05.onClick = function () {
       alignObjects();
-      moveObjects(-13);
+      moveObjects(-12);
       deleteObject();
       subMenuNormal.close();
       menuPanel.close();
@@ -265,7 +265,7 @@ if (app.selection.length > 1) {
     var button05 = subMenuRaglan.add("button", undefined, "3");
     button05.onClick = function () {
       alignObjects();
-      moveObjects(-13);
+      moveObjects(-12);
       deleteObject();
       subMenuRaglan.close();
       menuPanel.close();
