@@ -4,34 +4,34 @@ Copyright © 2023
 https://heroleam.github.io/portfolio
 */
 
-// Script: Localiza aplique para gabarito estilo bolso
+// Script: Pocket style template location
 
 // ----------------------------------------------------------------------------------- //
 
 var cm = 28.35;
 
-// Verifica se dois objetos estão selecionados
+// Checks if two objects are selected
 if (app.selection.length > 1) {
   var menuPanel = new Window("dialog", "Localização", undefined, { resizeable: true });
   menuPanel.orientation = "column";
   menuPanel.preferredSize.width = 300;
 
-  // Adiciona um grupo para a descrição
+  // Add a group to the description
   var descriptionGroup = menuPanel.add("group");
   descriptionGroup.orientation = "column";
-  descriptionGroup.alignChildren = ["center", "top"]; // Alinha o conteúdo do grupo ao centro
+  descriptionGroup.alignChildren = ["center", "top"]; // Align the group content to the center
 
-  // Adiciona uma descrição com quebras de linha
+  // Add a description with line breaks
   var descriptionText = "AVISO!!!\nSe for camiseta POLO deixar pelo menos 1cm afastado do pique!";
   var description = descriptionGroup.add("statictext", undefined, descriptionText, { multiline: true });
 
-  // Botão para abrir o submenu Tipo 1
+  // Button to open the Type 1 submenu
   var buttonSubMenuNormal = menuPanel.add("button", undefined, "Localização Normal");
   buttonSubMenuNormal.onClick = function () {
     openSubMenuNormal();
   };
 
-  // Botão para abrir o submenu Tipo 2
+  // Button to open the Type 2 submenu
   var buttonSubMenuRaglan = menuPanel.add("button", undefined, "Localização Raglan");
   buttonSubMenuRaglan.onClick = function () {
     openSubMenuRaglan();
@@ -43,7 +43,7 @@ if (app.selection.length > 1) {
 
   menuPanel.show();
 
-  // Função para abrir o submenu Tipo 1
+  // Function to open the Type 1 submenu
   function openSubMenuNormal() {
     var subMenuNormal = new Window("dialog", "Medidas Normais", undefined, { resizeable: true });
     subMenuNormal.orientation = "column";
@@ -219,7 +219,7 @@ if (app.selection.length > 1) {
     subMenuNormal.show();
   }
 
-  // Função para abrir o submenu Tipo 2
+  // Function to open the Type 2 submenu
   function openSubMenuRaglan() {
     var subMenuRaglan = new Window("dialog", "Medidas Raglan", undefined, { resizeable: true });
     subMenuRaglan.orientation = "column";
@@ -395,29 +395,29 @@ if (app.selection.length > 1) {
     subMenuRaglan.show();
   }
 
-  // Função para alinhar objetos
+  // Function to align objects
   function alignObjects() {
-    // Objeto selecionado por baixo
+    // Object selected below
     var objetoAlinhar = app.selection[1];
-    // Objeto selecionado por cima
+    // Object selected from above
     var objetoReferencia = app.selection[0];
 
-    // Obtém a posição do objeto de referência
+    // Gets the position of the reference object
     var referenciaPosicaoX = objetoReferencia.left + objetoReferencia.width / 2;
     var referenciaPosicaoY = objetoReferencia.top - objetoReferencia.height / 2;
 
-    // Obtém a largura x altura do objeto a ser alinhado
+    // Gets the width x height of the object to be aligned
     var larguraObjetoAlinhar = objetoAlinhar.width;
     var alturaObjetoAlinhar = objetoAlinhar.height;
 
-    // Define a posição x e y do objeto a ser alinhado com base nas posições x e y do objeto de referência e nas dimensões do objeto a ser alinhado
+    // Sets the x and y position of the object to be aligned based on the x and y positions of the reference object and the dimensions of the object to be aligned
     objetoAlinhar.left = referenciaPosicaoX - larguraObjetoAlinhar / 2;
     objetoAlinhar.top = referenciaPosicaoY + (alturaObjetoAlinhar - alturaObjetoAlinhar);
 
     app.redraw();
   }
 
-  // Função para mover o objeto para baixo
+  // Function to move the object down
   function moveObjects(distancia) {
     var objeto = app.selection[1];
     var distanciaPontos = distancia * cm;
@@ -426,7 +426,7 @@ if (app.selection.length > 1) {
     app.redraw();
   }
 
-  // Função para mover raglan
+  // Function to move raglan
   function raglan() {
     var objeto = app.selection[0];
     var moverDireita = cm / 2;
@@ -435,7 +435,7 @@ if (app.selection.length > 1) {
     objeto.left += moverDireita;
   }
 
-  // Função para excluir o objeto
+  // Function to delete the object
   function deleteObject() {
     var objeto = app.selection[0];
     objeto.remove();
