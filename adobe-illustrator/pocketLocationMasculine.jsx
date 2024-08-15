@@ -422,7 +422,7 @@ if (app.selection.length > 1) {
     var objeto = app.selection[1];
     var distanciaPontos = distancia * cm;
     objeto.top += distanciaPontos;
-
+    objeto.left += cm;
     app.redraw();
   }
 
