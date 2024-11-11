@@ -18,6 +18,7 @@ var layerOptions = [
   "Puff",
   "Glitter",
   "Foil",
+  "Gel",
   "Brilha Escuro",
   "Aviamento",
   "Liner",
