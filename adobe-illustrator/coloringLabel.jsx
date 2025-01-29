@@ -70,4 +70,19 @@ function labelGenerator() {
     colorCodeText.move(groupPathItems, ElementPlacement.PLACEATEND);
     colorShape.move(groupPathItems, ElementPlacement.PLACEATEND);
     textShape.move(groupPathItems, ElementPlacement.PLACEATEND);
+
+        // Center the group on the artboard
+    var artboard = doc.artboards[doc.artboards.getActiveArtboardIndex()];
+    var artboardBounds = artboard.artboardRect;
+    var artboardCenterX = (artboardBounds[0] + artboardBounds[2]) / 2;
+    var artboardCenterY = (artboardBounds[1] + artboardBounds[3]) / 2;
+
+    var groupBounds = groupPathItems.visibleBounds;
+    var groupCenterX = (groupBounds[0] + groupBounds[2]) / 2;
+    var groupCenterY = (groupBounds[1] + groupBounds[3]) / 2;
+
+    groupPathItems.position = [
+    groupPathItems.position[0] + (artboardCenterX - groupCenterX),
+    groupPathItems.position[1] + (artboardCenterY - groupCenterY)
+    ];
 }
