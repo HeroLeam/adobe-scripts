@@ -103,17 +103,17 @@ for (var i = 0; i < 8; i++) {
     retanguloPrincipal.move(grupoPrincipal, ElementPlacement.PLACEATEND);
 }
 
-// Center the group on the artboard
+// Get the active clipboard
 var artboard = doc.artboards[doc.artboards.getActiveArtboardIndex()];
 var artboardBounds = artboard.artboardRect;
-var artboardCenterX = (artboardBounds[0] + artboardBounds[2]) / 2;
-var artboardCenterY = (artboardBounds[1] + artboardBounds[3]) / 2;
 
+// Get the artboard bounds
+var artboardLeft = artboardBounds[0];
+var artboardBottom = artboardBounds[3];
+
+// Get the group bounds
 var groupBounds = grupoPrincipal.visibleBounds;
-var groupCenterX = (groupBounds[0] + groupBounds[2]) / 2;
-var groupCenterY = (groupBounds[1] + groupBounds[3]) / 2;
+var groupHeight = groupBounds[1] - groupBounds[3];
 
-grupoPrincipal.position = [
-    grupoPrincipal.position[0] + (artboardCenterX - groupCenterX),
-    grupoPrincipal.position[1] + (artboardCenterY - groupCenterY)
-];
+// Sets the new position to the bottom left corner
+grupoPrincipal.position = [artboardLeft, artboardBottom + groupHeight];
