@@ -11,6 +11,7 @@ if (app.documents.length === 0) {
 
 var doc = app.activeDocument;
 var newLayer;
+var fontSize = 35;
 
 // Check if the layer "Tabela de Cores" exists
 for (var i = 0; i < doc.layers.length; i++) {
@@ -49,6 +50,7 @@ function criarTexto(conteudo, x, y, tamanhoFonte, alinhamento) {
     texto.top = y;
     texto.left = x;
     texto.textRange.size = tamanhoFonte;
+    texto.textRange.characterAttributes.textFont = app.textFonts.getByName("ArialMT");
     texto.textRange.justification = alinhamento;
     return texto;
 }
@@ -96,7 +98,7 @@ var cores = [
 
 for (var i = 0; i < 8; i++) {
     var posY = margemInternaY - (i + 1) * (alturaLinha + espacamento);
-    var texto = criarTexto((i + 1) + ":", margemInternaX, posY - alturaLinha / 2 + -3, 40, Justification.LEFT);
+    var texto = criarTexto((i + 1) + ":", margemInternaX, posY - alturaLinha / 2 + -3, fontSize, Justification.LEFT);
     var retangulo = criarRetangulo(margemInternaX + 30, posY, larguraColoracao - 30, alturaLinha, cores[i]);
     texto.move(grupoPrincipal, ElementPlacement.PLACEATEND);
     retangulo.move(grupoPrincipal, ElementPlacement.PLACEATEND);
