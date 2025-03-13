@@ -8,18 +8,33 @@ https://heroleam.github.io/portfolio
 
 var fileName = activeDocument.fullName;
 
-function salvarArtboardsbuttonOne() {
+function salvarArtboardsButtonOne() {
   salvarArtboards([1], "_buttonOne");
   dialog.close();
 }
 
-function salvarArtboardsbuttonTwo() {
-  salvarArtboards([1, 7, 8], "_buttonTwo");
+function salvarArtboardsButtonTwo() {
+  salvarArtboards([1, 3, 4, 5], "_buttonTwo");
   dialog.close();
 }
 
-function salvarArtboardsbuttonThree() {
-  salvarArtboards([1, 4, 5, 6], "_buttonThree");
+function salvarArtboardsButtonThree() {
+  salvarArtboards([1, 3, 4, 5, 6], "_buttonThree");
+  dialog.close();
+}
+
+function salvarArtboardsButtonFour() {
+  salvarArtboards([1, 3, 4, 5, 6, 7], "_buttonFour");
+  dialog.close();
+}
+
+function salvarArtboardsButtonFive() {
+  salvarArtboards([1, 3, 4, 5, 6, 7, 8], "_buttonFive");
+  dialog.close();
+}
+
+function salvarArtboardsButtonSix() {
+  salvarArtboards([1, 3, 4, 5, 6, 7, 8], "_buttonSix");
   dialog.close();
 }
 
@@ -48,12 +63,21 @@ function salvarArtboards(artboardIndices, sufixo) {
 var dialog = new Window("dialog", "Salvar Artboards");
 
 var buttonOne = dialog.add("button", undefined, "Principal");
-buttonOne.onClick = salvarArtboardsbuttonOne;
+buttonOne.onClick = salvarArtboardsButtonOne;
 
 var buttonTwo = dialog.add("button", undefined, "2 Sortimentos");
-buttonTwo.onClick = salvarArtboardsbuttonTwo;
+buttonTwo.onClick = salvarArtboardsButtonTwo;
 
 var buttonThree = dialog.add("button", undefined, "3 Sortimentos");
-buttonThree.onClick = salvarArtboardsbuttonThree;
+buttonThree.onClick = salvarArtboardsButtonThree;
+
+var buttonFour = dialog.add("button", undefined, "4 Sortimentos");
+buttonFour.onClick = salvarArtboardsButtonFour;
+
+var buttonFive = dialog.add("button", undefined, "5 Sortimentos");
+buttonFive.onClick = salvarArtboardsButtonFive;
+
+var buttonSix = dialog.add("button", undefined, "6 Sortimentos");
+buttonSix.onClick = salvarArtboardsButtonSix;
 
 dialog.show();
