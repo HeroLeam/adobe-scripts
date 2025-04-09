@@ -72,6 +72,7 @@ if (doc.selection.length === 0) {
       ],
     "QUEBRAS\n(Tamanhos quebrados)":
       [
+        "ÚNICO",
         "PB - MB - GB - 1T - 2T - 3T",
         "PB - MB - GB - 1T - 2T - 3T - 4 - 6 - 8",
         "1T - 2T",
