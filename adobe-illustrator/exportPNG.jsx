@@ -18,6 +18,7 @@ if (newName === null) {
   var exportOptions = new ExportOptionsPNG24();
   exportOptions.antiAliasing = true;
   exportOptions.transparency = true;
+  exportOptions.artBoardClipping = true;
 
   var fileNameWIthExtension = newName + ".png";
   var fullPath = new File(folderOrigin + "/" + fileNameWIthExtension);
