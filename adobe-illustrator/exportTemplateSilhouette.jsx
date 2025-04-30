@@ -68,6 +68,7 @@ if (doc.selection.length === 0) {
     "ADULTO\n(№92)":
       [
         "P - M - G",
+        "P - M - G - GG",
         "P - M - G - GG - XGG - XXGG"
       ],
     "QUEBRAS\n(Tamanhos quebrados)":
